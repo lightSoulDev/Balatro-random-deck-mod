@@ -14,7 +14,7 @@ SMODS.Back {
     stake = 1,
     unlocked = true,
     order = 16,
-    pos = { x = 1, y = 0 },
+    pos = { x = 2, y = 3},
     set = "Back",
     config = {
         jokers = {
