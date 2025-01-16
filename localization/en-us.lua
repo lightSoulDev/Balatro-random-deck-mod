@@ -7,7 +7,7 @@ return {
                     "All cards are",
                     "{C:attention}Randomized{} after scoring.",
                     "Start with a",
-                    "{C:enhanced}Randomized{} deck.",
+                    "{C:attention}Randomized{} deck.",
                 },
             },
         },
