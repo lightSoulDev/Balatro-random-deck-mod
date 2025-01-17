@@ -8,13 +8,16 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
+SMODS.Atlas({ key = "backs", atlas_table = "ASSET_ATLAS", path = "Backs.png", px = 71, py = 95 })
+
 SMODS.Back {
     key = 'random_deck',
     name = "Random Deck",
     stake = 1,
     unlocked = true,
     order = 16,
-    pos = { x = 2, y = 3},
+    pos = { x = 0, y = 0 },
+    atlas = 'backs',
     set = "Back",
     config = {
         jokers = {
@@ -35,10 +38,10 @@ SMODS.Back {
                         end
                         _rank = string.sub(G.DEBUG_SEED, 6, 6)
                         _suit = string.sub(G.DEBUG_SEED, 7, 7)
-                        if not G.P_CARDS[_suit .. '_' .._rank] then
-                            if G.P_CARDS['H' .. '_' .._rank] then
+                        if not G.P_CARDS[_suit .. '_' .. _rank] then
+                            if G.P_CARDS['H' .. '_' .. _rank] then
                                 _suit = nil
-                            elseif G.P_CARDS[_suit .. '_' ..'2'] then
+                            elseif G.P_CARDS[_suit .. '_' .. '2'] then
                                 _rank = nil
                             else
                                 _suit = nil
@@ -47,13 +50,15 @@ SMODS.Back {
                         end
                     end
 
-                    _rank = _rank or pseudorandom_element({'2','3','4','5','6','7','8','9','T','J','Q','K','A'}, pseudoseed('random_deck'))
-                    _suit = _suit or pseudorandom_element({'S','H','C','D'}, pseudoseed('random_deck'))
+                    _rank = _rank or
+                    pseudorandom_element({ '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A' },
+                        pseudoseed('random_deck'))
+                    _suit = _suit or pseudorandom_element({ 'S', 'H', 'C', 'D' }, pseudoseed('random_deck'))
                     _suit = _suit or 'S'; _rank = _rank or 'A'
 
-                    v:set_base(G.P_CARDS[_suit .. '_' .._rank])
+                    v:set_base(G.P_CARDS[_suit .. '_' .. _rank])
                 end
-            return true
+                return true
             end
         }))
     end
